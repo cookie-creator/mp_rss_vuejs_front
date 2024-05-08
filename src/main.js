@@ -1,15 +1,20 @@
-import { createApp } from 'vue'
-import './index.css'
-import './style.css'
+/**
+ * main.js
+ *
+ * Bootstraps Vuetify and other plugins then mounts the App`
+ */
+
+// Plugins
+import { registerPlugins } from '@/plugins'
+
+// Components
 import App from './App.vue'
-import store from "./store";
-import router from "./router";
-import CKEditor from '@ckeditor/ckeditor5-vue';
 
-localStorage.theme = 'light'
+// Composables
+import { createApp } from 'vue'
 
-createApp(App)
-  .use(store)
-  .use(router)
-  .use(CKEditor)
-  .mount('#app')
+const app = createApp(App)
+
+registerPlugins(app)
+
+app.mount('#app')
